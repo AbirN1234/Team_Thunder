@@ -2,6 +2,6 @@
 
 
 ## Subhradeep Halder 
-###### Polyon Mondal
-###### Abir Naskar
-###### Tanushree Mondal
+## Polyon Mondal
+## Abir Naskar
+## Tanushree Mondal
