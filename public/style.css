@@ -1,0 +1,8 @@
+body {
+    background-image: url(background3.jpg);
+
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }

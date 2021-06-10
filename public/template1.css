@@ -1,0 +1,28 @@
+body{
+    background-image: linear-gradient(to top right, blue, skyblue);
+    background-repeat: no-repeat;
+}
+.container{
+    background-color: rgba(255, 255, 255, 0.479);
+}
+.col-sm-4{
+    background-color: white;
+    border-radius: 20px;
+    padding: 1%;
+}
+.col-sm-5{
+    background-color: white;
+    border-radius: 20px;
+    padding: 1%;
+}
+header{
+    background-color: darkblue;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+.col-sm-4:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+.col-sm-5:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}

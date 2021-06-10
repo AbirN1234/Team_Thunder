@@ -1,0 +1,16 @@
+body{
+    /* background-image: linear-gradient(to top left, rgb(0, 174, 255), skyblue); */
+    background-image: linear-gradient(to top left, rgb(46, 195, 245), rgb(255, 255, 115));
+    font-family: 'Times New Roman', Times, serif;
+}
+.format{
+    background-color: rgba(255, 255, 255, 0.548);
+    border-radius: 30px;
+    padding: 1%;
+}
+.format:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+.btn{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
