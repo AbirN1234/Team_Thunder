@@ -65,79 +65,99 @@ app.get('/',(req,res) => {
 });
 
 app.get("/login", (req, res) => {
-    res.render('login');
+    sess = req.session;
+    if(!sess.email) {
+        res.render('login', {error: ""});
+    }
+    else {
+        res.render('userDashboard', {user:sess.email});
+    }
+    
 });
 
 app.get("/register", (req, res) => {
-    res.render('register');
-});
-
-app.get("/createResume", (req, res) => {
     sess = req.session;
     if(!sess.email) {
-        res.render('login');
+        res.render('register', {error: ""});
     }
     else {
-        res.render('createResume');
+        res.render('userDashboard', {user:sess.email});
     }
+    
 });
 
+app.get("/demoResume", (req, res) => {
+    sess = req.session;
+    if(!sess.email) {
+        res.render('login', {error: ""});
+    }
+    else {
+        res.render('demoResume');
+    }
+});
 
 
 app.post("/signupenc",(req,res)=>{
-    var {name,email, password, con_pass, image}  = req.body;
-    if(password == con_pass){
-        var myCipher= mycrypto.createCipher(algo,key);
-        var encpass=myCipher.update(password,'utf8','hex')
-        +myCipher.final('hex');
-
-        db.query('INSERT INTO users (name,email, password, image) VALUES (?,?,?,?)',
-        [name,email, encpass, image],
-        (err,result)=>{
-            if(err){
-                res.status(422).send({err:err})
-            }else{
-                // res.status(201).send({message:'Your data inserted succesfully'}); 
-
-
-
-                var mailOptions = {
-                    from: 'gmitcse1@gmail.com',
-                    to: email,
-                    subject: 'Thunder RESUME Creator Application',
-                    html: '<b>WELCOME:' + name + '</b> <br/>Registration Successful !',
-                  };
-                  
-                transporter.sendMail(mailOptions, function(error, info){
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        console.log('Email sent: ' + info.response);
+    var {name, email, password, con_pass, image}  = req.body;
+    db.query('SELECT * FROM users WHERE email = ?', [email],
+    (err,result)=>{
+        if(err){
+            res.send({ err: err })
+        }
+        if(result.length>0){
+            res.render('register', {error:"User already exists!"});
+        }
+        else {
+            if(password == con_pass){
+                var myCipher= mycrypto.createCipher(algo,key);
+                var encpass=myCipher.update(password,'utf8','hex')
+                +myCipher.final('hex');
+        
+                db.query('INSERT INTO users (name,email, password, image) VALUES (?,?,?,?)',
+                [name,email, encpass, image],
+                (err,result)=>{
+                    if(err){
+                        res.status(422).send({err:err})
+                    }else{
+        
+                        var mailOptions = {
+                            from: 'gmitcse1@gmail.com',
+                            to: email,
+                            subject: 'Thunder CV Creator',
+                            html: '<b>WELCOME:' + name + '</b> <br/>Registration Successful !',
+                          };
+                          
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        });
+        
+                    
+                        res.render('login', {error: ""});
                     }
                 });
-
-
-
-            
-                res.render('login');
+                console.log("SignupSucessful");
+                
             }
-        });
-        console.log("SignupSucessful");
-        
-    }
-    else{
-        res.send({message:'Passwords not matched'}); 
-    }
+            else{
+                res.send({message:'Passwords not matched'}); 
+            }
+        }
+    });
+
+
+
+    
 });
 
 app.post("/loginenc",(req,res)=>{
     let {email, password}  = req.body;
-    // console.log(email + password);
-    // console.log(password);
     var myCipher= mycrypto.createCipher(algo,key);
     var encpass=myCipher.update(password,'utf8','hex') 
     +myCipher.final('hex');
-    // console.log(password);
 
     db.query('SELECT * FROM users WHERE email=?',
         [email],
@@ -145,21 +165,26 @@ app.post("/loginenc",(req,res)=>{
             if(err){
                 res.send({ err: err })
             }
-            if(result.length>0 && result[0].password == encpass){
-                console.log("Login Successfull");
-                sess = req.session;
-                sess.email = email;
-                res.render('userDashboard', {user:sess.email});
+            if(result.length<=0) {
+                res.render('login', {error: 'User not found.'});  
             }
             else {
-                res.status(404).send({ message: 'Invalid Credential' }); 
+                if(result.length>0 && result[0].password == encpass){
+                    console.log("Login Successfull");
+                    sess = req.session;
+                    sess.email = email;
+                    res.render('userDashboard', {user:sess.email});
+                }
+                else {
+                    res.render('login', {error: "Incorrect Password"});
+                }
             }
+            
         }
 
     )
 })
 
-// LOGOUT
 app.get('/logout',(req,res) => {
     req.session.destroy((err) => {
         if(err) {
