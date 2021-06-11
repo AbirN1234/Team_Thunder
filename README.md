@@ -54,7 +54,25 @@ After succesfull installation you will see a new folder has generated named **no
   - You have to install [zampp](https://www.apachefriends.org/download.html) for mysql local database.
   - then install xampp in your system
   - then turn on apache & MySQL from xampp control panel
-  - 
+  - create database named **cv** then import the resume.sql file there
+  
+  now you are good to go to run the application in your system.
+  
+  
+ ## Run the application
+ 
+  - Go to the project directory in cmd 
+  - just type 
+    -      npm start
+  
+  then the application will run on the 4050 port .
+  
+  Just open the browser & go to the [http://localhost:4050/](http://localhost:4050/)
+  
+  
+  
+ 
+ 
   
 
     
