@@ -73,8 +73,8 @@ After succesfull installation you will see a new folder has generated named **no
   
   
   #### Team Member
-    - Subhradeep halder
-    - Polyon Mondol
+    - Subhradeep Halder
+    - Polyon Mondal
     - Abir Naskar
     - Tanushree Mondal
   
