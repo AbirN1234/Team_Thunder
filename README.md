@@ -5,7 +5,7 @@ ____
 
 ## Requirements
 
-For development, you will only need Node.js and a node global package, Yarn, installed in your environement.
+For development, you will only need Node.js and a node global package, Yarn, installed in your environement, And also you need a MySql for database
 
 ### Node
 - #### Node installation on Windows
@@ -35,23 +35,27 @@ If the installation was successful, you should be able to run the following comm
 -  Open this directory in cmd
   then run this command one by one
     
-    $ npm i
-    
-    $ npm i express
-    $ npm i mysql
-    $ npm i body-parser
-    $ npm i crypto
-    $ npm i ejs
-    $ npm i express-session
-    $ npm i formidable
-    $ npm i fs
-    $ npm i nodemailer
-    $ npm i nodemon
+- #####    $ npm i
+- #####    $ npm i express
+- #####    $ npm i mysql
+- #####    $ npm i body-parser
+- #####    $ npm i crypto
+- #####    $ npm i ejs
+- #####    $ npm i express-session
+- #####    $ npm i formidable
+- #####    $ npm i fs
+- #####    $ npm i nodemailer
+- #####    $ npm i nodemon
     
 
 After succesfull installation you will see a new folder has generated named **node_modules**
 
-- 
+### XAMPP
+  - You have to install [zampp](https://www.apachefriends.org/download.html) for mysql local database.
+  - then install xampp in your system
+  - then turn on apache & MySQL from xampp control panel
+  - 
+  
 
     
     
