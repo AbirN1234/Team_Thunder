@@ -71,12 +71,11 @@ After succesfull installation you will see a new folder has generated named **no
   
   
   
- 
- 
   
-
-    
-    
-
   
+  #### Team Member
+    - Subhradeep halder
+    - Polyon Mondol
+    - Abir Naskar
+    - Tanushree Mondal
   
