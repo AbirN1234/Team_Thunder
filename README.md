@@ -34,19 +34,20 @@ If the installation was successful, you should be able to run the following comm
 -  Download the zip file of the project from the [Github Repo Link](https://github.com/AbirN1234/Team_Thunder). Then unzip it in a folder where you have installed node & npm.
 -  Open this directory in cmd
   then run this command one by one
-    
-- #####    $ npm i
-- #####    $ npm i express
-- #####    $ npm i mysql
-- #####    $ npm i body-parser
-- #####    $ npm i crypto
-- #####    $ npm i ejs
-- #####    $ npm i express-session
-- #####    $ npm i formidable
-- #####    $ npm i fs
-- #####    $ npm i nodemailer
-- #####    $ npm i nodemon
-    
+      - npm i
+     
+   ##### then run this command one by one
+    - npm i
+    - npm i express
+    - npm i mysql
+    - npm i body-parser
+    - npm i crypto
+    - npm i ejs
+    - npm i express-session
+    - npm i formidable
+    - npm i fs
+    - npm i nodemailer
+    - npm i nodemon
 
 After succesfull installation you will see a new folder has generated named **node_modules**
 
