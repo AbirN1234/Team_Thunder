@@ -50,7 +50,7 @@ If the installation was successful, you should be able to run the following comm
 After succesfull installation you will see a new folder has generated named **node_modules**
 
 ### XAMPP
-  - You have to install [zampp](https://www.apachefriends.org/download.html) for mysql local database.
+  - You have to install [xampp](https://www.apachefriends.org/download.html) for mysql local database.
   - then install xampp in your system
   - then turn on apache & MySQL from xampp control panel
   - create database named **cv** then import the resume.sql file there
