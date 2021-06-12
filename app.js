@@ -2,9 +2,19 @@ const express = require("express");
 const app = express();
 const path = require('path');
 app.set('view engine', 'ejs');
-var formidable = require('formidable');
-var fs = require('fs');
 var nodemailer = require('nodemailer'); 
+
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const mysql = require('mysql');
+var mycrypto=require('crypto');
+
+var key="password"; 
+var algo='aes256';
+
+app.use(express.static(path.join(__dirname, './public')));   
+app.use(express.static(path.join(__dirname, './images')));
+
 
 
 var transporter = nodemailer.createTransport({
@@ -16,18 +26,7 @@ var transporter = nodemailer.createTransport({
   });
 
 
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const mysql = require('mysql');
-var mycrypto=require('crypto');
-var key="password";
-var algo='aes256';
-app.use(express.static(path.join(__dirname, './public')));   
-app.use(express.static(path.join(__dirname, './images')));   
 
-
-
-app.use(express.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -38,12 +37,13 @@ const db = mysql.createConnection({
 
 db.connect(function(err) {
     if (err) {
-      console.error('error connecting: ' + err.stack);
+      console.error('Error in connecting: ' + err.stack);
       return;
     }
     console.log('connected as id ' + db.threadId);
 });
-app.use(bodyParser.urlencoded({ extended: true })); 
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use(session({
@@ -60,7 +60,7 @@ app.get('/',(req,res) => {
         res.render('index');
     }
     else {
-        res.render('userDashboard', {user:sess.email});
+        res.render('userDashboard', {user:sess.user});
     }
 });
 
@@ -70,7 +70,7 @@ app.get("/login", (req, res) => {
         res.render('login', {error: ""});
     }
     else {
-        res.render('userDashboard', {user:sess.email});
+        res.render('userDashboard', {user:sess.user});
     }
     
 });
@@ -81,7 +81,7 @@ app.get("/register", (req, res) => {
         res.render('register', {error: ""});
     }
     else {
-        res.render('userDashboard', {user:sess.email});
+        res.render('userDashboard', {user:sess.user});
     }
     
 });
@@ -98,7 +98,8 @@ app.get("/demoResume", (req, res) => {
 
 
 app.post("/signupenc",(req,res)=>{
-    var {name, email, password, con_pass, image}  = req.body;
+    var image = "User Image";
+    var {name, email, password, con_pass}  = req.body;
     db.query('SELECT * FROM users WHERE email = ?', [email],
     (err,result)=>{
         if(err){
@@ -173,7 +174,8 @@ app.post("/loginenc",(req,res)=>{
                     console.log("Login Successfull");
                     sess = req.session;
                     sess.email = email;
-                    res.render('userDashboard', {user:sess.email});
+                    sess.user = result[0].name;
+                    res.render('userDashboard', {user:sess.user});
                 }
                 else {
                     res.render('login', {error: "Incorrect Password"});
@@ -201,7 +203,7 @@ app.get("*", (req, res) => {
         res.redirect('/');
     }
     else {
-        res.render('userDashboard', {user:sess.email});
+        res.render('userDashboard', {user:sess.user});
     }
 })
 
