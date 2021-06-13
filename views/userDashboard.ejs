@@ -11,13 +11,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="form.css"> -->
+    <link rel="stylesheet" href="style2.css">
 </head>
 <body>
     
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md navbar-dark font-weight-bold" style="margin-left: 10%; margin-right: 10%; font-size: 120%;">
-            <a class="navbar-brand" href="/">Resume</a>
+            <a class="navbar-brand" href="/">Thunder Resume</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -140,7 +140,7 @@
                       <div class="row justify-content-center text-center display-4 fw-bold">
                           Resume Generator
                       </div>
-                      <form action="" method="POST">
+                      <!-- <form action="" method="POST"> -->
                       <div class="row justify-content-center my-3 format">
                           <div class="col-11 text-center">
                               <header class="text-center rounded-pill bg-primary fs-3 fw-bold text-light pb-2 pt-2">Personal Details</header>
@@ -152,7 +152,7 @@
                               </div>
                               <div class="row justify-content-evenly mb-2">
                                   <div class="col-sm-3 fs-5">Email Address:</div>
-                                  <div class="col-sm-9"><input type="email" name="email" id="email" class="form-control" required></div>
+                                  <div class="col-sm-9"><input type="text" name="email" id="email" class="form-control" required></div>
                               </div>
                               <div class="row justify-content-evenly mb-2">
                                   <div class="col-sm-3 fs-5">Address:</div>
@@ -160,15 +160,15 @@
                               </div>
                               <div class="row justify-content-evenly mb-2">
                                   <div class="col-sm-3 fs-5">Contect No:</div>
-                                  <div class="col-sm-9"><input type="tel" name="contect" id="contect" class="form-control" required></div>
+                                  <div class="col-sm-9"><input type="text" name="contect" id="contect" class="form-control" required></div>
                               </div>
                               <div class="row justify-content-evenly mb-2">
                                   <div class="col-sm-3 fs-5">Linkedin:</div>
-                                  <div class="col-sm-9"><input type="url" name="linkedin" id="linkedin" class="form-control"></div>
+                                  <div class="col-sm-9"><input type="text" name="linkedin" id="linkedin" class="form-control"></div>
                               </div>
                               <div class="row justify-content-evenly mb-2">
                                   <div class="col-sm-3 fs-5">Github:</div>
-                                  <div class="col-sm-9"><input type="url" name="git" id="git" class="form-control"></div>
+                                  <div class="col-sm-9"><input type="text" name="git" id="git" class="form-control"></div>
                               </div>
                           </div>
                       </div>
@@ -214,7 +214,7 @@
                               <button type="submit" class="btn btn-success rounded-pill">Generate Resume</button>
                           </div>
                       </div>
-                      </form>
+                      <!-- </form> -->
                   </div>
                   
                   
@@ -243,5 +243,56 @@
             </div>
           </div>
     </div>
+
+
+
+
+
+
+
+    <div style="margin-top: 15%;">
+      <div id="container">
+        <div id="part1">
+            <div id="companyinfo"> <a id="sitelink" href="#">Thunder Resume</a>
+                <p id="title">Cool and Perfect Resume </p>
+                <p id="detail"> We help you to create cool resume to have your career kick started </p>
+            </div>
+            <div id="explore">
+                <p id="txt1">Explore</p> <a class="link" href="/">Home</a> <a class="link" href="/login">Login</a> <a class="link" href="/register">Register</a> <a class="link" href="#aboutus">AboutUs</a>
+            </div>
+            <div id="visit">
+                <p id="txt2">Visit</p>
+                <p class="text">GMIT </p>
+                <p class="text"> West Bengal, Kolkata - 700144 </p>
+                <p class="text"> Baruipur, Balarampur </p>
+                <p class="text">Phone: 9807654132 </p>
+                <p class="text">Fax: 8907 - 5732 </p>
+            </div>
+            <div id="legal">
+                <p id="txt3">Legal</p> <a class="link1" href="#">Terms and Conditions</a> <a class="link1" href="#">Private Policy</a>
+            </div>
+            <div id="subscribe">
+                <p id="txt4">Subscribe for new resume</p>
+                <div style="padding-top: 2%;"> <input id="email" type="email" placeholder="Email"> </div>
+                
+            </div>
+        </div>
+        <div id="part2" style="text-align: center;">
+            <p id="txt6"><i class="material-icons tiny"> THUNDER  RESUME CREATOR </p>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
